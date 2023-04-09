@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>maven on 小詹&#39;s Blog</title>
+        <link>https://example.com/tags/maven/</link>
+        <description>Recent content in maven on 小詹&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 07 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/maven/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>在 Maven 專案新增私有的 jar 檔</title>
+        <link>https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</link>
+        <pubDate>Fri, 07 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</guid>
+        <description>&lt;p&gt;Java 的 Maven 專案中想引用的 jar 檔因授權問題或公司內部自行開發而未存在於 &lt;a class=&#34;link&#34; href=&#34;https://repo1.maven.org/maven2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Maven central&lt;/a&gt;，因此必須手動新增。&lt;/p&gt;
+&lt;p&gt;本篇以新增 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/tw/database/technologies/appdev/jdbc-downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle Database JDBC driver&lt;/a&gt; 為例來說明三種方法的實作。&lt;/p&gt;
+&lt;h2 id=&#34;方法一在-pomxml-檔添加-dependency-引用本地-jar-檔路徑&#34;&gt;方法一：在 pom.xml 檔添加 &amp;lt;dependency&amp;gt; 引用本地 jar 檔路徑&lt;/h2&gt;
+&lt;p&gt;於專案根目錄建立 lib 目錄，將 ojdbc8.jar 檔放入，並在 pom.xml 添加 &lt;code&gt;&amp;lt;dependency&amp;gt;&lt;/code&gt;，如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.jdbc&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;ojdbc8&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;system&lt;span class=&#34;nt&#34;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;systemPath&amp;gt;&lt;/span&gt;${basedir}/lib/ojdbc8.jar&lt;span class=&#34;nt&#34;&gt;&amp;lt;/systemPath&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;必須加入 &lt;code&gt;&amp;lt;scope&amp;gt;&lt;/code&gt; 及 &lt;code&gt;&amp;lt;systemPath&amp;gt;&lt;/code&gt; 標籤，其中 &lt;code&gt;${basedir}&lt;/code&gt; 變數為專案根目錄。&lt;/p&gt;
+&lt;blockquote&gt;
+    &lt;p&gt;&lt;p&gt;&lt;code&gt;&amp;lt;scope&amp;gt;&lt;/code&gt; 標籤為依賴的範圍，控制三個 classpath，有編譯 (compile)、測試 (test)、執行 (runtime)，設定值有 compile、test、provided、runtime、system。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;compile：為預設值，對於編譯、測試、執行有效。&lt;/li&gt;
+&lt;li&gt;test：僅對於測試有效。&lt;/li&gt;
+&lt;li&gt;provided：對於編譯、測試有效。&lt;/li&gt;
+&lt;li&gt;runtime：對於測試、執行有效。&lt;/li&gt;
+&lt;li&gt;system：同 provided，對於編譯、測試有效，但必須搭配 &lt;code&gt;&amp;lt;systemPath&amp;gt;&lt;/code&gt; 標籤指定本地 jar 檔路徑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;&lt;span class=&#34;cite&#34;&gt;&lt;span&gt;― &lt;/span&gt;&lt;span&gt;许晓斌 著, &lt;/span&gt;&lt;cite&gt;Maven实战&lt;/cite&gt;&lt;/span&gt;&lt;/blockquote&gt;
+&lt;p&gt;這邊使用 system 為編譯及執行時有效，在部署至容器後因容器已提供所以無須使用，需再搭配 &lt;code&gt;&amp;lt;systemPath&amp;gt;&lt;/code&gt; 標籤指定本地 jar 檔路徑。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;方法二在-pomxml-檔添加-repositories-引用本地-repository-路徑&#34;&gt;方法二：在 pom.xml 檔添加 &amp;lt;repositories&amp;gt; 引用本地 repository 路徑&lt;/h2&gt;
+&lt;p&gt;於專案根目錄建立 lib 目錄作為 repository，並在 pom.xml 添加 &lt;code&gt;&amp;lt;repositories&amp;gt;&lt;/code&gt;，如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;repositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;repository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;lib&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;lib&lt;span class=&#34;nt&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;file:///${basedir}/lib&lt;span class=&#34;nt&#34;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/repository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/repositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 pom.xml 加入 ojdbc8.jar 檔座標，並將依賴的 jar 檔依照座標建立目錄路徑。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.jdbc&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;ojdbc8&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如上座標則於 lib 下建立 com/oracle/jdbc/ojdbc8/1.0 目錄，並命名 jar 檔為 ojdbc8–1.0.jar。&lt;/p&gt;
+&lt;p&gt;最後在相同路徑新增同檔名的 ojdbc8–1.0.pom，內容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;project&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;na&#34;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.jdbc&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;ojdbc8&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;POM was created from install:install-file&lt;span class=&#34;nt&#34;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;設定如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001.png&#34;
+	width=&#34;1306&#34;
+	height=&#34;958&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001_hu648878a771c365f12a99a93d3028174a_111118_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001_hu648878a771c365f12a99a93d3028174a_111118_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;327px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設定後會在 Maven local repository 複製相同的 jar 檔。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002.png&#34;
+	width=&#34;1499&#34;
+	height=&#34;510&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002_hu99395e25f3526c35a791a75cc0ec7d56_39398_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002_hu99395e25f3526c35a791a75cc0ec7d56_39398_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;293&#34;
+		data-flex-basis=&#34;705px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;方法三以-installinstall-file-指令將-jar-檔安裝到-maven-local-repository&#34;&gt;方法三：以 install:install-file 指令將 jar 檔安裝到 Maven local repository&lt;/h2&gt;
+&lt;p&gt;若需在 pom.xml 添加依賴，必須以指令手動安裝此依賴的 Maven 座標，以將 jar 檔安裝在 Maven local repository。&lt;/p&gt;
+&lt;p&gt;指令如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn install:install-file
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -DgroupId=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;group-id&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -DartifactId=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;artifact-id&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dversion=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;version&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dpackaging=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;packaging&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -DgeneratePom=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;true/false&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; (預設為 true)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dfile=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;path-to-file&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;以 Oracle Database JDBC driver 為例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn install:install-file
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -DgroupId=com.oracle.jdbc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -DartifactId=ojdbc8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dversion=1.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dpackaging=jar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dfile=C:\Users\chengjhan\Desktop\ojdbc8.jar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;696&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;597px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;已安裝 ojdbc8.jar 檔於 Maven local repository。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004.png&#34;
+	width=&#34;1491&#34;
+	height=&#34;452&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004_hu98773686b99b458702677c9bf12354dd_35392_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004_hu98773686b99b458702677c9bf12354dd_35392_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;329&#34;
+		data-flex-basis=&#34;791px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;若使用 Eclipse，可利用介面執行。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005.png&#34;
+	width=&#34;1341&#34;
+	height=&#34;957&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005_hue2fd2c6e082880c94a656e58c54c0e2d_78219_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005_hue2fd2c6e082880c94a656e58c54c0e2d_78219_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/questions/4955635/how-to-add-local-jar-files-to-a-maven-project&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;How to add local jar files to a Maven project?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://hklifenote.blogspot.com/2020/10/maven-jar.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Maven — 引用本地端的 jar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.miniasp.com/post/2022/09/08/How-to-add-3rd-party-JARs-to-Maven-managed-Java-project&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;如何將私有的 JAR 檔加入到由 Apache Maven 管理的 Java 專案中&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://intellipaat.com/community/6786/how-to-add-local-jar-files-to-a-maven-project&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;How to add local jar files to a Maven project?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Guide to installing 3rd party JARs&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>在 Windows 安裝 Maven</title>
+        <link>https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/</link>
+        <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001.png&#34;
+	width=&#34;340&#34;
+	height=&#34;86&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001_hu3519026175eb0e4eb706170a831af0ef_9770_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001_hu3519026175eb0e4eb706170a831af0ef_9770_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;395&#34;
+		data-flex-basis=&#34;948px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝-jdk&#34;&gt;安裝 JDK&lt;/h2&gt;
+&lt;p&gt;在安裝 Maven 之前必須先安裝 JDK (Java Development Kit)，本篇以安裝 JDK 1.8 為例，至 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/tw/java/technologies/javase/javase8u211-later-archive-downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle 官方網站&lt;/a&gt;下載並安裝。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002.png&#34;
+	width=&#34;1782&#34;
+	height=&#34;1525&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002_hu671d4a9c1342fabc86a646c400638be4_204604_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002_hu671d4a9c1342fabc86a646c400638be4_204604_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;116&#34;
+		data-flex-basis=&#34;280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下載 64 位元的安裝版，依對話框安裝即可。&lt;/p&gt;
+&lt;p&gt;安裝後必須新增環境變數：&lt;br&gt;
+至「本機」&amp;gt; 右鍵「內容」&amp;gt;「進階系統設定」&amp;gt;「環境變數」&amp;gt;「新增系統變數」設定。&lt;/p&gt;
+&lt;p&gt;變數名稱：JAVA_HOME。&lt;br&gt;
+變數值：C:\Program File\Java\jdk1.8.0_351 (預設安裝路徑)。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003.png&#34;
+	width=&#34;1056&#34;
+	height=&#34;894&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003_hu49baaaba5254ecdc5c5272a66795c5b7_33263_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003_hu49baaaba5254ecdc5c5272a66795c5b7_33263_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;編輯 Path 環境變數：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004.png&#34;
+	width=&#34;1056&#34;
+	height=&#34;894&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004_hu9b363cdbcdf38e405ff429868210d480_33359_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004_hu9b363cdbcdf38e405ff429868210d480_33359_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;新增 Path：&lt;br&gt;
+在 Path 變數新增「%JAVA_HOME%\bin」。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005.png&#34;
+	width=&#34;1056&#34;
+	height=&#34;894&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005_hub0fa75f890250fce6c8e2f079a6dd9f1_36641_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005_hub0fa75f890250fce6c8e2f079a6dd9f1_36641_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;確認安裝結果：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006_hu96a0e90b1b155fa8076fde63b6afeab5_44698_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006_hu96a0e90b1b155fa8076fde63b6afeab5_44698_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;安裝-maven&#34;&gt;安裝 Maven&lt;/h2&gt;
+&lt;p&gt;至 &lt;a class=&#34;link&#34; href=&#34;https://maven.apache.org/download.cgi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Apache Maven 官方網站&lt;/a&gt;下載 Maven 解壓縮放置於欲放置的目錄，本篇放置於 D:\ 目錄下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007.png&#34;
+	width=&#34;1356&#34;
+	height=&#34;610&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007_hu0087a41d828aa746a23992e3c92808db_42728_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007_hu0087a41d828aa746a23992e3c92808db_42728_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;必須新增環境變數：&lt;br&gt;
+至「本機」&amp;gt; 右鍵「內容」&amp;gt;「進階系統設定」&amp;gt;「環境變數」&amp;gt;「新增系統變數」。&lt;/p&gt;
+&lt;p&gt;變數名稱：M2_HOME。&lt;br&gt;
+變數值：D:\apache-maven-3.8.1。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008.png&#34;
+	width=&#34;1056&#34;
+	height=&#34;894&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008_huf2de8911580635dd256658a0e32bf4a2_32409_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008_huf2de8911580635dd256658a0e32bf4a2_32409_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;新增 Path：&lt;br&gt;
+在 Path 變數新增「%M2_HOME%\bin」。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009.png&#34;
+	width=&#34;1056&#34;
+	height=&#34;894&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009_hu08a9e0bcfbe040a9d23fb3e39c76100f_37238_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009_hu08a9e0bcfbe040a9d23fb3e39c76100f_37238_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;確認安裝結果：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010_hue40d2010a4248a57d0f62b4ac85bc3b2_47602_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010_hue40d2010a4248a57d0f62b4ac85bc3b2_47602_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
