@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on 小詹&#39;s Blog</title>
-        <link>https://example.com/page/</link>
+        <link>https://chengjhan.github.io/page/</link>
         <description>Recent content in Pages on 小詹&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>About</title>
-        <link>https://example.com/about/</link>
+        <link>https://chengjhan.github.io/about/</link>
         <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/about/</guid>
+        <guid>https://chengjhan.github.io/about/</guid>
         <description>&lt;p&gt;我是詹晟，因為喜歡寫程式而從生化科系轉職成軟體工程師。&lt;br&gt;
 目前是自由工作者，過去有 7 年的 Java 軟體工程師工作經驗。&lt;br&gt;
 這裡會分享我在工作中遇到問題的結果方法及工作心得筆記。&lt;/p&gt;
@@ -19,18 +19,18 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>https://example.com/archives/</link>
+        <link>https://chengjhan.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/archives/</guid>
+        <guid>https://chengjhan.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Search</title>
-        <link>https://example.com/search/</link>
+        <link>https://chengjhan.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/search/</guid>
+        <guid>https://chengjhan.github.io/search/</guid>
         <description></description>
         </item>
         

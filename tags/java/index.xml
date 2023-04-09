@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>java on 小詹&#39;s Blog</title>
-        <link>https://example.com/tags/java/</link>
+        <link>https://chengjhan.github.io/tags/java/</link>
         <description>Recent content in java on 小詹&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/java/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>利用 WLST (WebLogic Scripting Tool) 管理 WebLogic (下)</title>
-        <link>https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/</link>
+        <link>https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/</link>
         <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/</guid>
-        <description>&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_001.jpg&#34;
+        <guid>https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_001.jpg&#34;
 	width=&#34;702&#34;
 	height=&#34;336&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_001_hu920538c6a048b855845431e302478d57_52476_480x0_resize_q75_box.jpg 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_001_hu920538c6a048b855845431e302478d57_52476_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_001_hu920538c6a048b855845431e302478d57_52476_480x0_resize_q75_box.jpg 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_001_hu920538c6a048b855845431e302478d57_52476_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -53,10 +53,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java weblogic.WLST startManagedServer.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;870&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002_hu5c351bcc3efdc6180c500508782f110b_75445_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002_hu5c351bcc3efdc6180c500508782f110b_75445_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002_hu5c351bcc3efdc6180c500508782f110b_75445_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002_hu5c351bcc3efdc6180c500508782f110b_75445_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -74,10 +74,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain &lt;span class=&#34;p&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; .\bin\setDomainEnv.cmd &lt;span class=&#34;p&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; java weblogic.WLST startManagedServer.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;783&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003_hub39a43198e9a332d9b9f95781cfbd08b_69585_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003_hub39a43198e9a332d9b9f95781cfbd08b_69585_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003_hub39a43198e9a332d9b9f95781cfbd08b_69585_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003_hub39a43198e9a332d9b9f95781cfbd08b_69585_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -87,10 +87,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;結果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_004.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_004.png&#34;
 	width=&#34;1771&#34;
 	height=&#34;962&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_004_hu443ec98372cecaddba20989edda09c9a_212540_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_004_hu443ec98372cecaddba20989edda09c9a_212540_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_004_hu443ec98372cecaddba20989edda09c9a_212540_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_004_hu443ec98372cecaddba20989edda09c9a_212540_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -150,10 +150,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java weblogic.WLST stopManagedServer.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;812&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005_hu683fe6327f890e08d3bbe9181fe2babb_66914_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005_hu683fe6327f890e08d3bbe9181fe2babb_66914_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005_hu683fe6327f890e08d3bbe9181fe2babb_66914_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005_hu683fe6327f890e08d3bbe9181fe2babb_66914_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -171,10 +171,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain &lt;span class=&#34;p&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; .\bin\setDomainEnv.cmd &lt;span class=&#34;p&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; java weblogic.WLST stopManagedServer.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;725&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006_hu80c8649eeb61852e5a9985d436bd7810_62052_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006_hu80c8649eeb61852e5a9985d436bd7810_62052_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006_hu80c8649eeb61852e5a9985d436bd7810_62052_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006_hu80c8649eeb61852e5a9985d436bd7810_62052_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -184,10 +184,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;結果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_007.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_007.png&#34;
 	width=&#34;1771&#34;
 	height=&#34;962&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_007_huc9e19f28c466abeb89fd9a7d4598e3a3_213666_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_007_huc9e19f28c466abeb89fd9a7d4598e3a3_213666_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_007_huc9e19f28c466abeb89fd9a7d4598e3a3_213666_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_007_huc9e19f28c466abeb89fd9a7d4598e3a3_213666_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -249,10 +249,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java weblogic.WLST checkServersState.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;899&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008_hu1f159e24434adbf5c7977b597ceac5c0_72733_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008_hu1f159e24434adbf5c7977b597ceac5c0_72733_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008_hu1f159e24434adbf5c7977b597ceac5c0_72733_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008_hu1f159e24434adbf5c7977b597ceac5c0_72733_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -270,10 +270,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain &lt;span class=&#34;p&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; .\bin\setDomainEnv.cmd &lt;span class=&#34;p&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; java weblogic.WLST checkServersState.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;812&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009_hudb614c06e51231b1f2c9e6bb836ee4f7_65885_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009_hudb614c06e51231b1f2c9e6bb836ee4f7_65885_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009_hudb614c06e51231b1f2c9e6bb836ee4f7_65885_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009_hudb614c06e51231b1f2c9e6bb836ee4f7_65885_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -317,14 +317,14 @@
         </item>
         <item>
         <title>利用 WLST (WebLogic Scripting Tool) 管理 WebLogic (上)</title>
-        <link>https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/</link>
+        <link>https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/</link>
         <pubDate>Sat, 08 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/</guid>
-        <description>&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_001.jpg&#34;
+        <guid>https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_001.jpg&#34;
 	width=&#34;702&#34;
 	height=&#34;336&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_001_hu920538c6a048b855845431e302478d57_52476_480x0_resize_q75_box.jpg 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_001_hu920538c6a048b855845431e302478d57_52476_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_001_hu920538c6a048b855845431e302478d57_52476_480x0_resize_q75_box.jpg 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_001_hu920538c6a048b855845431e302478d57_52476_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -346,10 +346,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.\wlst.cmd
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;956&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002_hu9f7c685094ff90f96760172a16f735c7_52603_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002_hu9f7c685094ff90f96760172a16f735c7_52603_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002_hu9f7c685094ff90f96760172a16f735c7_52603_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002_hu9f7c685094ff90f96760172a16f735c7_52603_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -378,10 +378,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;connect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;weblogic&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;P@ssw0rd&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;t3://localhost:7001&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;319&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003_hu53e69e03b934fe00e2121c6c2b900a3d_32631_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003_hu53e69e03b934fe00e2121c6c2b900a3d_32631_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003_hu53e69e03b934fe00e2121c6c2b900a3d_32631_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003_hu53e69e03b934fe00e2121c6c2b900a3d_32631_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -414,10 +414,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ManagedServer_1&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Server&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;t3://localhost:7001&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;261&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004_hu7ccac3ff5c52fcfa5a7fd996f0ef8605_30999_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004_hu7ccac3ff5c52fcfa5a7fd996f0ef8605_30999_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004_hu7ccac3ff5c52fcfa5a7fd996f0ef8605_30999_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004_hu7ccac3ff5c52fcfa5a7fd996f0ef8605_30999_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -426,10 +426,10 @@
 		data-flex-basis=&#34;1592px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_005.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_005.png&#34;
 	width=&#34;1771&#34;
 	height=&#34;962&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_005_hu373b3cdce0776ee91f5d42a787f17cc4_212782_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_005_hu373b3cdce0776ee91f5d42a787f17cc4_212782_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_005_hu373b3cdce0776ee91f5d42a787f17cc4_212782_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_005_hu373b3cdce0776ee91f5d42a787f17cc4_212782_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -462,10 +462,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;shutdown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ManagedServer_1&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Server&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ignoreSessions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;true&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;true&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;203&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006_huab8ab4f45b53c4d973434522351c565d_20444_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006_huab8ab4f45b53c4d973434522351c565d_20444_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006_huab8ab4f45b53c4d973434522351c565d_20444_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006_huab8ab4f45b53c4d973434522351c565d_20444_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -474,10 +474,10 @@
 		data-flex-basis=&#34;2047px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_007.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_007.png&#34;
 	width=&#34;1771&#34;
 	height=&#34;962&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_007_hu81248d8f643c97a92ccb6577da87163c_213607_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_007_hu81248d8f643c97a92ccb6577da87163c_213607_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_007_hu81248d8f643c97a92ccb6577da87163c_213607_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_007_hu81248d8f643c97a92ccb6577da87163c_213607_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -498,10 +498,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;state&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Server&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 顯示伺服器狀態&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;348&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008_hue30a02626ac183724f08bedd4823a561_30869_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008_hue30a02626ac183724f08bedd4823a561_30869_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008_hue30a02626ac183724f08bedd4823a561_30869_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008_hue30a02626ac183724f08bedd4823a561_30869_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -520,10 +520,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;290&#34;
-	srcset=&#34;https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009_hu5c0a5f0a55abd2072a36cc049360695f_16786_480x0_resize_box_3.png 480w, https://example.com/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009_hu5c0a5f0a55abd2072a36cc049360695f_16786_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009_hu5c0a5f0a55abd2072a36cc049360695f_16786_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009_hu5c0a5f0a55abd2072a36cc049360695f_16786_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -545,10 +545,10 @@
         </item>
         <item>
         <title>在 Maven 專案新增私有的 jar 檔</title>
-        <link>https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</link>
+        <link>https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</link>
         <pubDate>Fri, 07 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</guid>
+        <guid>https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</guid>
         <description>&lt;p&gt;Java 的 Maven 專案中想引用的 jar 檔因授權問題或公司內部自行開發而未存在於 &lt;a class=&#34;link&#34; href=&#34;https://repo1.maven.org/maven2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Maven central&lt;/a&gt;，因此必須手動新增。&lt;/p&gt;
 &lt;p&gt;本篇以新增 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/tw/database/technologies/appdev/jdbc-downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -672,10 +672,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;設定如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001.png&#34;
 	width=&#34;1306&#34;
 	height=&#34;958&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001_hu648878a771c365f12a99a93d3028174a_111118_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001_hu648878a771c365f12a99a93d3028174a_111118_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001_hu648878a771c365f12a99a93d3028174a_111118_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001_hu648878a771c365f12a99a93d3028174a_111118_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -685,10 +685,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;設定後會在 Maven local repository 複製相同的 jar 檔。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002.png&#34;
 	width=&#34;1499&#34;
 	height=&#34;510&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002_hu99395e25f3526c35a791a75cc0ec7d56_39398_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002_hu99395e25f3526c35a791a75cc0ec7d56_39398_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002_hu99395e25f3526c35a791a75cc0ec7d56_39398_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002_hu99395e25f3526c35a791a75cc0ec7d56_39398_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -740,10 +740,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dfile=C:\Users\chengjhan\Desktop\ojdbc8.jar
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;696&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -753,10 +753,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;已安裝 ojdbc8.jar 檔於 Maven local repository。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004.png&#34;
 	width=&#34;1491&#34;
 	height=&#34;452&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004_hu98773686b99b458702677c9bf12354dd_35392_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004_hu98773686b99b458702677c9bf12354dd_35392_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004_hu98773686b99b458702677c9bf12354dd_35392_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004_hu98773686b99b458702677c9bf12354dd_35392_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -766,10 +766,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;若使用 Eclipse，可利用介面執行。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005.png&#34;
 	width=&#34;1341&#34;
 	height=&#34;957&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005_hue2fd2c6e082880c94a656e58c54c0e2d_78219_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005_hue2fd2c6e082880c94a656e58c54c0e2d_78219_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005_hue2fd2c6e082880c94a656e58c54c0e2d_78219_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_005_hue2fd2c6e082880c94a656e58c54c0e2d_78219_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -797,14 +797,14 @@
         </item>
         <item>
         <title>在 Windows 安裝 Maven</title>
-        <link>https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/</link>
+        <link>https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/</link>
         <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/</guid>
-        <description>&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001.png&#34;
+        <guid>https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001.png&#34;
 	width=&#34;340&#34;
 	height=&#34;86&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001_hu3519026175eb0e4eb706170a831af0ef_9770_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001_hu3519026175eb0e4eb706170a831af0ef_9770_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001_hu3519026175eb0e4eb706170a831af0ef_9770_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_001_hu3519026175eb0e4eb706170a831af0ef_9770_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -816,10 +816,10 @@
 &lt;h2 id=&#34;安裝-jdk&#34;&gt;安裝 JDK&lt;/h2&gt;
 &lt;p&gt;在安裝 Maven 之前必須先安裝 JDK (Java Development Kit)，本篇以安裝 JDK 1.8 為例，至 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/tw/java/technologies/javase/javase8u211-later-archive-downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Oracle 官方網站&lt;/a&gt;下載並安裝。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002.png&#34;
 	width=&#34;1782&#34;
 	height=&#34;1525&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002_hu671d4a9c1342fabc86a646c400638be4_204604_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002_hu671d4a9c1342fabc86a646c400638be4_204604_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002_hu671d4a9c1342fabc86a646c400638be4_204604_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_002_hu671d4a9c1342fabc86a646c400638be4_204604_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -833,10 +833,10 @@
 至「本機」&amp;gt; 右鍵「內容」&amp;gt;「進階系統設定」&amp;gt;「環境變數」&amp;gt;「新增系統變數」設定。&lt;/p&gt;
 &lt;p&gt;變數名稱：JAVA_HOME。&lt;br&gt;
 變數值：C:\Program File\Java\jdk1.8.0_351 (預設安裝路徑)。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;894&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003_hu49baaaba5254ecdc5c5272a66795c5b7_33263_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003_hu49baaaba5254ecdc5c5272a66795c5b7_33263_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003_hu49baaaba5254ecdc5c5272a66795c5b7_33263_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_003_hu49baaaba5254ecdc5c5272a66795c5b7_33263_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -846,10 +846,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;編輯 Path 環境變數：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;894&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004_hu9b363cdbcdf38e405ff429868210d480_33359_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004_hu9b363cdbcdf38e405ff429868210d480_33359_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004_hu9b363cdbcdf38e405ff429868210d480_33359_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_004_hu9b363cdbcdf38e405ff429868210d480_33359_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -860,10 +860,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;新增 Path：&lt;br&gt;
 在 Path 變數新增「%JAVA_HOME%\bin」。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;894&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005_hub0fa75f890250fce6c8e2f079a6dd9f1_36641_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005_hub0fa75f890250fce6c8e2f079a6dd9f1_36641_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005_hub0fa75f890250fce6c8e2f079a6dd9f1_36641_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_005_hub0fa75f890250fce6c8e2f079a6dd9f1_36641_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -881,10 +881,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;956&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006_hu96a0e90b1b155fa8076fde63b6afeab5_44698_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006_hu96a0e90b1b155fa8076fde63b6afeab5_44698_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006_hu96a0e90b1b155fa8076fde63b6afeab5_44698_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_006_hu96a0e90b1b155fa8076fde63b6afeab5_44698_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -897,10 +897,10 @@
 &lt;h2 id=&#34;安裝-maven&#34;&gt;安裝 Maven&lt;/h2&gt;
 &lt;p&gt;至 &lt;a class=&#34;link&#34; href=&#34;https://maven.apache.org/download.cgi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Apache Maven 官方網站&lt;/a&gt;下載 Maven 解壓縮放置於欲放置的目錄，本篇放置於 D:\ 目錄下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007.png&#34;
 	width=&#34;1356&#34;
 	height=&#34;610&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007_hu0087a41d828aa746a23992e3c92808db_42728_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007_hu0087a41d828aa746a23992e3c92808db_42728_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007_hu0087a41d828aa746a23992e3c92808db_42728_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_007_hu0087a41d828aa746a23992e3c92808db_42728_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -913,10 +913,10 @@
 至「本機」&amp;gt; 右鍵「內容」&amp;gt;「進階系統設定」&amp;gt;「環境變數」&amp;gt;「新增系統變數」。&lt;/p&gt;
 &lt;p&gt;變數名稱：M2_HOME。&lt;br&gt;
 變數值：D:\apache-maven-3.8.1。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;894&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008_huf2de8911580635dd256658a0e32bf4a2_32409_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008_huf2de8911580635dd256658a0e32bf4a2_32409_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008_huf2de8911580635dd256658a0e32bf4a2_32409_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_008_huf2de8911580635dd256658a0e32bf4a2_32409_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -927,10 +927,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;新增 Path：&lt;br&gt;
 在 Path 變數新增「%M2_HOME%\bin」。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;894&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009_hu08a9e0bcfbe040a9d23fb3e39c76100f_37238_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009_hu08a9e0bcfbe040a9d23fb3e39c76100f_37238_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009_hu08a9e0bcfbe040a9d23fb3e39c76100f_37238_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_009_hu08a9e0bcfbe040a9d23fb3e39c76100f_37238_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -948,10 +948,10 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn -v
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010.png&#34;
 	width=&#34;1732&#34;
 	height=&#34;956&#34;
-	srcset=&#34;https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010_hue40d2010a4248a57d0f62b4ac85bc3b2_47602_480x0_resize_box_3.png 480w, https://example.com/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010_hue40d2010a4248a57d0f62b4ac85bc3b2_47602_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010_hue40d2010a4248a57d0f62b4ac85bc3b2_47602_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/Image_010_hue40d2010a4248a57d0f62b4ac85bc3b2_47602_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
