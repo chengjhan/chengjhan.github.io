@@ -329,22 +329,7 @@ if (!doNotTrack) {
     >Oracle Database JDBC driver</a> 為例來說明三種方法的實作。</p>
 <h2 id="方法一在-pomxml-檔添加-dependency-引用本地-jar-檔路徑">方法一：在 pom.xml 檔添加 &lt;dependency&gt; 引用本地 jar 檔路徑</h2>
 <p>於專案根目錄建立 lib 目錄，將 ojdbc8.jar 檔放入，並在 pom.xml 添加 <code>&lt;dependency&gt;</code>，如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.oracle.jdbc<span class="nt">&lt;/groupId&gt;</span>
@@ -355,9 +340,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>必須加入 <code>&lt;scope&gt;</code> 及 <code>&lt;systemPath&gt;</code> 標籤，其中 <code>${basedir}</code> 變數為專案根目錄。</p>
+</span></span></code></pre></div><p>必須加入 <code>&lt;scope&gt;</code> 及 <code>&lt;systemPath&gt;</code> 標籤，其中 <code>${basedir}</code> 變數為專案根目錄。</p>
 <blockquote>
     <p><p><code>&lt;scope&gt;</code> 標籤為依賴的範圍，控制三個 classpath，有編譯 (compile)、測試 (test)、執行 (runtime)，設定值有 compile、test、provided、runtime、system。</p>
 <ul>
@@ -372,41 +355,15 @@ if (!doNotTrack) {
 <hr>
 <h2 id="方法二在-pomxml-檔添加-repositories-引用本地-repository-路徑">方法二：在 pom.xml 檔添加 &lt;repositories&gt; 引用本地 repository 路徑</h2>
 <p>於專案根目錄建立 lib 目錄作為 repository，並在 pom.xml 添加 <code>&lt;repositories&gt;</code>，如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;repositories&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;repository&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>lib<span class="nt">&lt;/id&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>lib<span class="nt">&lt;/name&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;url&gt;</span>file:///${basedir}/lib<span class="nt">&lt;/url&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/repository&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/repositories&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在 pom.xml 加入 ojdbc8.jar 檔座標，並將依賴的 jar 檔依照座標建立目錄路徑。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
+</span></span></code></pre></div><p>在 pom.xml 加入 ojdbc8.jar 檔座標，並將依賴的 jar 檔依照座標建立目錄路徑。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.oracle.jdbc<span class="nt">&lt;/groupId&gt;</span>
@@ -415,25 +372,9 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;/dependency&gt;</span>
 </span></span><span class="line"><span class="cl">  ...
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如上座標則於 lib 下建立 com/oracle/jdbc/ojdbc8/1.0 目錄，並命名 jar 檔為 ojdbc8–1.0.jar。</p>
+</span></span></code></pre></div><p>如上座標則於 lib 下建立 com/oracle/jdbc/ojdbc8/1.0 目錄，並命名 jar 檔為 ojdbc8–1.0.jar。</p>
 <p>最後在相同路徑新增同檔名的 ojdbc8–1.0.pom，內容如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span><span class="nt">&gt;</span>
@@ -443,9 +384,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&lt;description&gt;</span>POM was created from install:install-file<span class="nt">&lt;/description&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>設定如下：</p>
+</span></span></code></pre></div><p>設定如下：</p>
 <p><img src="/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_001.png"
 	width="1306"
 	height="958"
@@ -475,46 +414,21 @@ if (!doNotTrack) {
 <h2 id="方法三以-installinstall-file-指令將-jar-檔安裝到-maven-local-repository">方法三：以 install:install-file 指令將 jar 檔安裝到 Maven local repository</h2>
 <p>若需在 pom.xml 添加依賴，必須以指令手動安裝此依賴的 Maven 座標，以將 jar 檔安裝在 Maven local repository。</p>
 <p>指令如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">mvn install:install-file
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">mvn install:install-file
 </span></span><span class="line"><span class="cl">  -DgroupId=<span class="p">&lt;</span>group-id&gt;
 </span></span><span class="line"><span class="cl">  -DartifactId=<span class="p">&lt;</span>artifact-id&gt;
 </span></span><span class="line"><span class="cl">  -Dversion=<span class="p">&lt;</span>version&gt;
 </span></span><span class="line"><span class="cl">  -Dpackaging=<span class="p">&lt;</span>packaging&gt;
 </span></span><span class="line"><span class="cl">  -DgeneratePom=<span class="p">&lt;</span>true/false<span class="p">&gt;</span> (預設為 true)
 </span></span><span class="line"><span class="cl">  -Dfile=<span class="p">&lt;</span>path-to-file&gt;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>以 Oracle Database JDBC driver 為例：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">mvn install:install-file
+</span></span></code></pre></div><p>以 Oracle Database JDBC driver 為例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">mvn install:install-file
 </span></span><span class="line"><span class="cl">  -DgroupId=com.oracle.jdbc
 </span></span><span class="line"><span class="cl">  -DartifactId=ojdbc8
 </span></span><span class="line"><span class="cl">  -Dversion=1.0
 </span></span><span class="line"><span class="cl">  -Dpackaging=jar
 </span></span><span class="line"><span class="cl">  -Dfile=C:\Users\chengjhan\Desktop\ojdbc8.jar
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003.png"
+</span></span></code></pre></div><p><img src="/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003.png"
 	width="1732"
 	height="696"
 	srcset="/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_480x0_resize_box_3.png 480w, /p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_003_hub1b87f06f5f5a87e5d0f593a1e2821de_76425_1024x0_resize_box_3.png 1024w"

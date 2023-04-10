@@ -341,17 +341,9 @@ if (!doNotTrack) {
 <p>WLST 是一個命令列腳本介面 (command-line scripting interface)，可以透過 WLST 執行 WebLogic 的遠端管理。WLST 是基於 Jython (Java scripting interpreter) 的語法與執行環境。本篇將以 Windows 下的環境介紹基本的 WLST 操作方法。</p>
 <hr>
 <h2 id="啟動-wlst">啟動 WLST</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> <span class="p">&lt;</span>Oracle_Home<span class="p">&gt;</span>\oracle_common\common\bin
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> <span class="p">&lt;</span>Oracle_Home<span class="p">&gt;</span>\oracle_common\common\bin
 </span></span><span class="line"><span class="cl">.\wlst.cmd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002.png"
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002.png"
 	width="1732"
 	height="956"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002_hu9f7c685094ff90f96760172a16f735c7_52603_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_002_hu9f7c685094ff90f96760172a16f735c7_52603_1024x0_resize_box_3.png 1024w"
@@ -366,24 +358,10 @@ if (!doNotTrack) {
 <hr>
 <h2 id="連線-wlst">連線 WLST</h2>
 <p>利用 Jython 語法呼叫 <code>connect()</code> 方法，並將 WebLogic 管理員使用者帳號、密碼、Admin Console URL 代入作為參數。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;Username&#39;</span><span class="p">,</span> <span class="s1">&#39;Password&#39;</span><span class="p">,</span> <span class="s1">&#39;Admin Console URL&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;Username&#39;</span><span class="p">,</span> <span class="s1">&#39;Password&#39;</span><span class="p">,</span> <span class="s1">&#39;Admin Console URL&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003.png"
 	width="1732"
 	height="319"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003_hu53e69e03b934fe00e2121c6c2b900a3d_32631_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_003_hu53e69e03b934fe00e2121c6c2b900a3d_32631_1024x0_resize_box_3.png 1024w"
@@ -398,28 +376,14 @@ if (!doNotTrack) {
 <hr>
 <h2 id="啟動-managed-server">啟動 Managed Server</h2>
 <p>利用 Jython 語法呼叫 <code>start()</code> 方法，並將 Managed Server 的名稱、Admin Console URL 代入作為參數。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Managed Server Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="s1">&#39;Admin Console URL&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">start</span><span class="p">(</span><span class="s1">&#39;Managed Server Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="s1">&#39;Admin Console URL&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Info:</strong><br>
 第二個參數中，若為單一伺服器則為 Server；若為叢集伺服器則為 Cluster（叢集伺服器可不需 Admin Console URL 參數）。</p>
 </blockquote>
 <p>例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">start</span><span class="p">(</span><span class="s1">&#39;ManagedServer_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">start</span><span class="p">(</span><span class="s1">&#39;ManagedServer_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004.png"
 	width="1732"
 	height="261"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004_hu7ccac3ff5c52fcfa5a7fd996f0ef8605_30999_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_004_hu7ccac3ff5c52fcfa5a7fd996f0ef8605_30999_1024x0_resize_box_3.png 1024w"
@@ -446,28 +410,14 @@ if (!doNotTrack) {
 <hr>
 <h2 id="關閉-managed-server">關閉 Managed Server</h2>
 <p>利用 Jython 語法呼叫 <code>shutdown()</code> 方法，並將 Managed Server 的名稱代入作為參數。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">shutdown</span><span class="p">(</span><span class="s1">&#39;Managed Server Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="n">ignoreSessions</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">shutdown</span><span class="p">(</span><span class="s1">&#39;Managed Server Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="n">ignoreSessions</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Info:</strong><br>
 第二個參數中，若為單一伺服器則為 Server；若為叢集伺服器則為 Cluster。</p>
 </blockquote>
 <p>例如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">shutdown</span><span class="p">(</span><span class="s1">&#39;ManagedServer_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="n">ignoreSessions</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">shutdown</span><span class="p">(</span><span class="s1">&#39;ManagedServer_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="n">ignoreSessions</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006.png"
 	width="1732"
 	height="203"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006_huab8ab4f45b53c4d973434522351c565d_20444_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_006_huab8ab4f45b53c4d973434522351c565d_20444_1024x0_resize_box_3.png 1024w"
@@ -493,17 +443,9 @@ if (!doNotTrack) {
 ></p>
 <hr>
 <h2 id="檢查伺服器狀態">檢查伺服器狀態</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">ls</span><span class="p">(</span><span class="s1">&#39;Servers&#39;</span><span class="p">,</span> <span class="n">returnMap</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span> <span class="c1"># 列出含有 Server 字串的伺服器</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">ls</span><span class="p">(</span><span class="s1">&#39;Servers&#39;</span><span class="p">,</span> <span class="n">returnMap</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span> <span class="c1"># 列出含有 Server 字串的伺服器</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span> <span class="n">state</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">)</span> <span class="c1"># 顯示伺服器狀態</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008.png"
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008.png"
 	width="1732"
 	height="348"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008_hue30a02626ac183724f08bedd4823a561_30869_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_008_hue30a02626ac183724f08bedd4823a561_30869_1024x0_resize_box_3.png 1024w"
@@ -517,15 +459,8 @@ if (!doNotTrack) {
 ></p>
 <hr>
 <h2 id="退出-wlst">退出 WLST</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span>
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009.png"
 	width="1732"
 	height="290"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009_hu5c0a5f0a55abd2072a36cc049360695f_16786_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/Image_009_hu5c0a5f0a55abd2072a36cc049360695f_16786_1024x0_resize_box_3.png 1024w"

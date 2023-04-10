@@ -338,33 +338,15 @@ if (!doNotTrack) {
 <p>上篇介紹了 WLST 命令列的基本用法，本篇將介紹使用 .py 檔的方式，將執行的命令寫成 .py 檔，利用遠端的方式更自動化地管理 WebLogic。</p>
 <h2 id="啟動-managed-server">啟動 Managed Server</h2>
 <p>編輯 .py 檔，檔名命名為 startManagedServer.py，放置於 &lt;Oracle_Home&gt;\user_projects\domains\base_domain 下，檔案內容如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
 </span></span><span class="line"><span class="cl"><span class="n">start</span><span class="p">(</span><span class="s1">&#39;ManagedServer_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 啟動 Managed Server</span>
 </span></span><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span> <span class="c1"># 退出 WLST</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>可利用遠端電腦執行此檔案達成啟動 Managed Server，指令如下：</p>
+</span></span></code></pre></div><p>可利用遠端電腦執行此檔案達成啟動 Managed Server，指令如下：</p>
 <p><strong><em>Windows</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
 </span></span><span class="line"><span class="cl">.\bin\setDomainEnv.cmd
 </span></span><span class="line"><span class="cl">java weblogic.WLST startManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002.png"
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002.png"
 	width="1732"
 	height="870"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002_hu5c351bcc3efdc6180c500508782f110b_75445_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_002_hu5c351bcc3efdc6180c500508782f110b_75445_1024x0_resize_box_3.png 1024w"
@@ -377,15 +359,8 @@ if (!doNotTrack) {
 	
 ></p>
 <p>或單行命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain <span class="p">&amp;&amp;</span> .\bin\setDomainEnv.cmd <span class="p">&amp;&amp;</span> java weblogic.WLST startManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain <span class="p">&amp;&amp;</span> .\bin\setDomainEnv.cmd <span class="p">&amp;&amp;</span> java weblogic.WLST startManagedServer.py
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003.png"
 	width="1732"
 	height="783"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003_hub39a43198e9a332d9b9f95781cfbd08b_69585_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_003_hub39a43198e9a332d9b9f95781cfbd08b_69585_1024x0_resize_box_3.png 1024w"
@@ -411,57 +386,23 @@ if (!doNotTrack) {
 	
 ></p>
 <p><strong><em>Linux</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin
 </span></span><span class="line"><span class="cl">. ./setDomainEnv.sh
 </span></span><span class="line"><span class="cl">java weblogic.WLST startManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>或單行命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin <span class="o">&amp;&amp;</span> . ./setDomainEnv.sh <span class="o">&amp;&amp;</span> java weblogic.WLST startManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
+</span></span></code></pre></div><p>或單行命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin <span class="o">&amp;&amp;</span> . ./setDomainEnv.sh <span class="o">&amp;&amp;</span> java weblogic.WLST startManagedServer.py
+</span></span></code></pre></div><hr>
 <h2 id="關閉-managed-server">關閉 Managed Server</h2>
 <p>編輯 .py 檔，檔名命名為 stopManagedServer.py，放置於 &lt;Oracle_Home&gt;\user_projects\domains\base_domain 下，檔案內容如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
 </span></span><span class="line"><span class="cl"><span class="n">shutdown</span><span class="p">(</span><span class="s1">&#39;ManagedServer_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">,</span> <span class="n">ignoreSessions</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span> <span class="c1"># 關閉 Managed Server</span>
 </span></span><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span> <span class="c1"># 退出 WLST</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>可利用遠端電腦執行此檔案達成關閉 Managed Server，指令如下：</p>
+</span></span></code></pre></div><p>可利用遠端電腦執行此檔案達成關閉 Managed Server，指令如下：</p>
 <p><strong><em>Windows</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
 </span></span><span class="line"><span class="cl">.\bin\setDomainEnv.cmd
 </span></span><span class="line"><span class="cl">java weblogic.WLST stopManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005.png"
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005.png"
 	width="1732"
 	height="812"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005_hu683fe6327f890e08d3bbe9181fe2babb_66914_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_005_hu683fe6327f890e08d3bbe9181fe2babb_66914_1024x0_resize_box_3.png 1024w"
@@ -474,15 +415,8 @@ if (!doNotTrack) {
 	
 ></p>
 <p>或單行命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain <span class="p">&amp;&amp;</span> .\bin\setDomainEnv.cmd <span class="p">&amp;&amp;</span> java weblogic.WLST stopManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain <span class="p">&amp;&amp;</span> .\bin\setDomainEnv.cmd <span class="p">&amp;&amp;</span> java weblogic.WLST stopManagedServer.py
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006.png"
 	width="1732"
 	height="725"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006_hu80c8649eeb61852e5a9985d436bd7810_62052_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_006_hu80c8649eeb61852e5a9985d436bd7810_62052_1024x0_resize_box_3.png 1024w"
@@ -508,59 +442,24 @@ if (!doNotTrack) {
 	
 ></p>
 <p><strong><em>Linux</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin
 </span></span><span class="line"><span class="cl">. ./setDomainEnv.sh
 </span></span><span class="line"><span class="cl">java weblogic.WLST stopManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>或單行命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin <span class="o">&amp;&amp;</span> . ./setDomainEnv.sh <span class="o">&amp;&amp;</span> java weblogic.WLST stopManagedServer.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
+</span></span></code></pre></div><p>或單行命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin <span class="o">&amp;&amp;</span> . ./setDomainEnv.sh <span class="o">&amp;&amp;</span> java weblogic.WLST stopManagedServer.py
+</span></span></code></pre></div><hr>
 <h2 id="檢查伺服器狀態">檢查伺服器狀態</h2>
 <p>編輯 .py 檔，檔名命名為 checkServersState.py，放置於 &lt;Oracle_Home&gt;\user_projects\domains\base_domain 下，檔案內容如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
 </span></span><span class="line"><span class="cl"><span class="n">serverList</span> <span class="o">=</span> <span class="n">ls</span><span class="p">(</span><span class="s1">&#39;Servers&#39;</span><span class="p">,</span> <span class="n">returnMap</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span> <span class="c1"># 列出所有伺服器</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">serverList</span><span class="p">:</span> <span class="n">state</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">&#39;Server&#39;</span><span class="p">)</span> <span class="c1"># 顯示伺服器狀態</span>
 </span></span><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span> <span class="c1"># 退出 WLST</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>可利用遠端電腦執行此檔案達成檢查伺服器狀態，指令如下：</p>
+</span></span></code></pre></div><p>可利用遠端電腦執行此檔案達成檢查伺服器狀態，指令如下：</p>
 <p><strong><em>Windows</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain
 </span></span><span class="line"><span class="cl">.\bin\setDomainEnv.cmd
 </span></span><span class="line"><span class="cl">java weblogic.WLST checkServersState.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008.png"
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008.png"
 	width="1732"
 	height="899"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008_hu1f159e24434adbf5c7977b597ceac5c0_72733_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_008_hu1f159e24434adbf5c7977b597ceac5c0_72733_1024x0_resize_box_3.png 1024w"
@@ -573,15 +472,8 @@ if (!doNotTrack) {
 	
 ></p>
 <p>或單行命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain <span class="p">&amp;&amp;</span> .\bin\setDomainEnv.cmd <span class="p">&amp;&amp;</span> java weblogic.WLST checkServersState.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\Oracle\Middleware\Oracle_Home\user_projects\domains\base_domain <span class="p">&amp;&amp;</span> .\bin\setDomainEnv.cmd <span class="p">&amp;&amp;</span> java weblogic.WLST checkServersState.py
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009.png"
 	width="1732"
 	height="812"
 	srcset="/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009_hudb614c06e51231b1f2c9e6bb836ee4f7_65885_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8B/Image_009_hudb614c06e51231b1f2c9e6bb836ee4f7_65885_1024x0_resize_box_3.png 1024w"
@@ -594,28 +486,12 @@ if (!doNotTrack) {
 	
 ></p>
 <p><strong><em>Linux</em></strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin
 </span></span><span class="line"><span class="cl">. ./setDomainEnv.sh
 </span></span><span class="line"><span class="cl">java weblogic.WLST checkServersState.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>或單行命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin <span class="o">&amp;&amp;</span> . ./setDomainEnv.sh <span class="o">&amp;&amp;</span> java weblogic.WLST checkServersState.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
+</span></span></code></pre></div><p>或單行命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Oracle/Middleware/Oracle_Home/user_projects/domains/base_domain/bin <span class="o">&amp;&amp;</span> . ./setDomainEnv.sh <span class="o">&amp;&amp;</span> java weblogic.WLST checkServersState.py
+</span></span></code></pre></div><hr>
 <h2 id="參考資料">參考資料</h2>
 <ol>
 <li><a class="link" href="https://stackoverflow.com/questions/30943752/error-could-not-find-or-load-main-class-weblogic-security-encrypt"  target="_blank" rel="noopener"
