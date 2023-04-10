@@ -13,7 +13,7 @@
         
         <guid>https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/</guid>
         <description>&lt;p&gt;Java 的 Maven 專案中想引用的 jar 檔因授權問題或公司內部自行開發而未存在於 &lt;a class=&#34;link&#34; href=&#34;https://repo1.maven.org/maven2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Maven central&lt;/a&gt;，因此必須手動新增。&lt;/p&gt;
+    &gt;Maven Central Repository&lt;/a&gt;，因此必須手動新增。&lt;/p&gt;
 &lt;p&gt;本篇以新增 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/tw/database/technologies/appdev/jdbc-downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Oracle Database JDBC driver&lt;/a&gt; 為例來說明三種方法的實作。&lt;/p&gt;
 &lt;h2 id=&#34;方法一在-pomxml-檔添加-dependency-引用本地-jar-檔路徑&#34;&gt;方法一：在 pom.xml 檔添加 &amp;lt;dependency&amp;gt; 引用本地 jar 檔路徑&lt;/h2&gt;
