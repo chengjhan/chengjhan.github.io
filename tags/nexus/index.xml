@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>nexus on 小詹&#39;s Blog</title>
+        <link>https://chengjhan.github.io/tags/nexus/</link>
+        <description>Recent content in nexus on 小詹&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/tags/nexus/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>建立私有的 Nexus Repository</title>
+        <link>https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/</link>
+        <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_001.png&#34;
+	width=&#34;590&#34;
+	height=&#34;400&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_001_hu64e13b8f43afd3da83576bf8c68c2913_67729_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_001_hu64e13b8f43afd3da83576bf8c68c2913_67729_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;公司可能因為防火牆政策擋住了 &lt;a class=&#34;link&#34; href=&#34;https://repo1.maven.org/maven2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Maven Central Repository&lt;/a&gt;，導致開發者下載不到所需要的套件，或公司有自行開發內部的套件供團隊使用。因此可以藉由架設一個公司內部使用的 Maven Central Repository 幫助下載外部的套件外，也可以自行上傳公司內部開發的套件供團隊使用。而本篇會利用 Nexus Repository 作為公司內部的 Maven Central Repository，在 Windows 的環境下從如何架設 Nexus Repository，到如何設定環境連線到自行架設的 Nexus Repository。&lt;/p&gt;
+&lt;h2 id=&#34;安裝-nexus-repository&#34;&gt;安裝 Nexus Repository&lt;/h2&gt;
+&lt;p&gt;至 &lt;a class=&#34;link&#34; href=&#34;https://www.sonatype.com/products/repository-oss-download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Sonatype 官方網站&lt;/a&gt;下載 Nexus Repository，下載後會是一個 zip 壓縮檔，本篇解壓縮至 D:\ 下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_002.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_002_hu9eb723dfcac3d45fe13dbfd216b80f20_232618_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_002_hu9eb723dfcac3d45fe13dbfd216b80f20_232618_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_003.png&#34;
+	width=&#34;1501&#34;
+	height=&#34;504&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_003_hu574f0d8d3d84aa6c3707480cb98c1b9b_34018_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_003_hu574f0d8d3d84aa6c3707480cb98c1b9b_34018_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;297&#34;
+		data-flex-basis=&#34;714px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;以系統管理員開啟 cmd，利用指令安裝。會自動註冊一個 Nexus Repository，預設會建立名為 nexus 的服務，指令如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; /d D:\nexus-3.50.0-01-win64\nexus-3.50.0-01\bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nexus /install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_004.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;261&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_004_hu5590914e3426edcd7c48a0de024aee74_22233_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_004_hu5590914e3426edcd7c48a0de024aee74_22233_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;663&#34;
+		data-flex-basis=&#34;1592px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接著啟動 Nexus Repository，指令如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nexus /start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_005.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;348&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_005_hu2d45bcb9f9e8f7f3aebd2d9c998c8011_29440_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_005_hu2d45bcb9f9e8f7f3aebd2d9c998c8011_29440_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;497&#34;
+		data-flex-basis=&#34;1194px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;啟動後以瀏覽器連線至 http://localhost:8081/ 即可進入 Web Console。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_006.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_006_hu91bf8e522def9d741f7003a9bf3c4569_182565_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_006_hu91bf8e522def9d741f7003a9bf3c4569_182565_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;點擊右上角 Sign in 開啟登入對話框，設定密碼並登入。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_007.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_007_hu77538291d16c69fdcf6541469b014329_187325_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_007_hu77538291d16c69fdcf6541469b014329_187325_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;帳號為 admin，初始密碼位於 D:\nexus-3.50.0-01-win64\sonatype-work\nexus3\admin.password。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_008.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_008_hu77538291d16c69fdcf6541469b014329_188471_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_008_hu77538291d16c69fdcf6541469b014329_188471_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;依照提示重新設定密碼即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_009.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_009_hu19d8cc4a36765f00212de9eec61e3a8c_157756_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_009_hu19d8cc4a36765f00212de9eec61e3a8c_157756_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;建立使用者帳號&#34;&gt;建立使用者帳號&lt;/h2&gt;
+&lt;p&gt;上一章節的 admin 帳號通常是管理者管理 Nexus Repository 使用，這邊建議建立一個使用者帳號給專案團隊使用。&lt;/p&gt;
+&lt;p&gt;首先先建立一個使用者群組：&lt;br&gt;
+至「Roles」&amp;gt;「Create Role」建立使用者群組。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_010.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_010_hu8de395dace1591470d77c4de7c805f86_153553_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_010_hu8de395dace1591470d77c4de7c805f86_153553_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Type 選擇「Nexus role」，並自行命名一個 Role ID 及 Role Name。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_011.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_011_hu8de395dace1591470d77c4de7c805f86_133440_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_011_hu8de395dace1591470d77c4de7c805f86_133440_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;加入角色權限：&lt;br&gt;
+因本篇要使用 Maven，所以加入 &lt;code&gt;nx-repository-view-maven2-*-*&lt;/code&gt; 的權限。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_012.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_012_hu8de395dace1591470d77c4de7c805f86_151685_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_012_hu8de395dace1591470d77c4de7c805f86_151685_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_013.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_013_hu8de395dace1591470d77c4de7c805f86_160481_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_013_hu8de395dace1591470d77c4de7c805f86_160481_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接著建立一個使用者帳號：&lt;br&gt;
+至「Users」&amp;gt;「Create local user」建立使用者帳號。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_014.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_014_hu02d9ec43fab64ab4f8b4cf1208d87dc2_139449_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_014_hu02d9ec43fab64ab4f8b4cf1208d87dc2_139449_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;自訂帳號名稱及密碼。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_015.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_015_hu02d9ec43fab64ab4f8b4cf1208d87dc2_138213_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_015_hu02d9ec43fab64ab4f8b4cf1208d87dc2_138213_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;將上面建立的 Role ID，賦予給這個使用者帳號，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_016.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_016_hu02d9ec43fab64ab4f8b4cf1208d87dc2_141188_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_016_hu02d9ec43fab64ab4f8b4cf1208d87dc2_141188_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_017.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_017_hu02d9ec43fab64ab4f8b4cf1208d87dc2_150355_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_017_hu02d9ec43fab64ab4f8b4cf1208d87dc2_150355_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;設定-nexus-repository-連線至-maven-central-repository&#34;&gt;設定 Nexus Repository 連線至 Maven Central Repository&lt;/h2&gt;
+&lt;p&gt;架設好 Nexus Repository 後，需要設定連線到 Maven Central Repository，以便讓 Nexus Repository 代替我們下載需要的套件。所以 Nexus Repository 的角色會是一個中繼站，會存放曾經下載過的套件。&lt;/p&gt;
+&lt;p&gt;至「Repositories」&amp;gt;「maven-central」設定連線：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_018.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_018_huc1c368292346e066e9cd54e70c855f56_184442_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_018_huc1c368292346e066e9cd54e70c855f56_184442_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_019.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_019_hu4081fb83506a79a33fb6f228b8f9c4da_160377_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_019_hu4081fb83506a79a33fb6f228b8f9c4da_160377_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;設定 Maven Central Repository 的 URL，為「https://repo1.maven.org/maven2/」，通常預設已直接設定。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_020.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_020_hu4081fb83506a79a33fb6f228b8f9c4da_170899_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_020_hu4081fb83506a79a33fb6f228b8f9c4da_170899_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note:&lt;br&gt;
+Nexus Repository 的主機需要能夠連線至 Maven Central Repository，公司的防火牆政策需要開啟對「https://repo1.maven.org/maven2/」的阻擋。若要查詢 &lt;a class=&#34;link&#34; href=&#34;https://repo1.maven.org/maven2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://repo1.maven.org/maven2/&lt;/a&gt; 的 IP，可利用 &lt;a class=&#34;link&#34; href=&#34;https://webiplookup.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Web iP Lookup&lt;/a&gt; 查詢。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_021.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_021_hu0c89803b4489acbe8c1863b50dc77ac4_126611_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_021_hu0c89803b4489acbe8c1863b50dc77ac4_126611_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;設定-maven-專案連線至-nexus-repository&#34;&gt;設定 Maven 專案連線至 Nexus Repository&lt;/h2&gt;
+&lt;p&gt;完成 Nexus Repository 的架設及所有設定後，在使用者端需要將專案連線到 Nexus Repository。這個設定可以在 Maven 專案的 pom.xml 檔或是 Maven 的 settings.xml 檔，這邊介紹利用 settings.xml 檔做設定，這樣其它的專案都可以共享這個設定。&lt;/p&gt;
+&lt;p&gt;若是使用 Eclipse 開發可以利用內建的 Maven 設定介面指定 settings.xml 檔路徑。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_022.png&#34;
+	width=&#34;1067&#34;
+	height=&#34;788&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_022_hua929c081522bb35294e5ee49d4ace60b_42471_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_022_hua929c081522bb35294e5ee49d4ace60b_42471_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;settings.xml 設定為：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;settings&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://maven.apache.org/SETTINGS/1.2.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;na&#34;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;na&#34;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;servers&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;server&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;username&amp;gt;&lt;/span&gt;users&lt;span class=&#34;nt&#34;&gt;&amp;lt;/username&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;password&amp;gt;&lt;/span&gt;P@ssw0rd&lt;span class=&#34;nt&#34;&gt;&amp;lt;/password&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/server&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/servers&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;mirrors&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;mirror&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;mirrorOf&amp;gt;&lt;/span&gt;*&lt;span class=&#34;nt&#34;&gt;&amp;lt;/mirrorOf&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;Nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;http://localhost:8081/repository/maven-public/&lt;span class=&#34;nt&#34;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/mirror&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/mirrors&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;repositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;repository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;Nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;http://localhost:8081/repository/maven-public/&lt;span class=&#34;nt&#34;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;releases&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span class=&#34;nt&#34;&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;/releases&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;snapshots&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span class=&#34;nt&#34;&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;updatePolicy&amp;gt;&lt;/span&gt;always&lt;span class=&#34;nt&#34;&gt;&amp;lt;/updatePolicy&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;/snapshots&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/repository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/repositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;pluginRepositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;pluginRepository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;Nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;http://localhost:8081/repository/maven-public/&lt;span class=&#34;nt&#34;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;releases&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span class=&#34;nt&#34;&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;/releases&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;snapshots&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span class=&#34;nt&#34;&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;updatePolicy&amp;gt;&lt;/span&gt;always&lt;span class=&#34;nt&#34;&gt;&amp;lt;/updatePolicy&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;/snapshots&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/pluginRepository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/pluginRepositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;activeProfiles&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;activeProfile&amp;gt;&lt;/span&gt;nexus&lt;span class=&#34;nt&#34;&gt;&amp;lt;/activeProfile&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/activeProfiles&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/settings&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下將說明各個設定的目的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;server&amp;gt;&lt;/code&gt; 標籤指定使用者帳號、密碼。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;mirror&amp;gt;&lt;/code&gt; 標籤指定 Nexus Repository 的 URL，其中必須填 maven-public 這個 Repository 的 URL。讓 Maven 只使用 Nexus Repository，不會去連線到 Maven Central Repository，如下圖：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_023.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_023_hu2df5d4f2395ed8a5b2c26702a5c9e184_157064_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_023_hu2df5d4f2395ed8a5b2c26702a5c9e184_157064_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;profile&amp;gt;&lt;/code&gt; 標籤指定一個 id 為 nexus 的 profile，同時也指定 Nexus Repository 的 URL。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;activeProfile&amp;gt;&lt;/code&gt; 標籤為啟用 nexus 這個 id 的 profile。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;測試&#34;&gt;測試&lt;/h2&gt;
+&lt;p&gt;在 Maven 專案的 pom.xml 添加一個 gson 的 dependency，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_024.png&#34;
+	width=&#34;1616&#34;
+	height=&#34;954&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_024_hubb7464d86fd2dcef1ec4aa90cf6bb02a_115438_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_024_hubb7464d86fd2dcef1ec4aa90cf6bb02a_115438_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;406px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;存檔後檢視 Nexus Repository 是否有下載到套件，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_025.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_025_hu0271d04e9a9395c2d483f49557dcf94f_206650_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_025_hu0271d04e9a9395c2d483f49557dcf94f_206650_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;結果確實是透過自己建的 Nexus Repository 下載到 gson 套件，專案再透過 Nexus Repository 將套件下載到開發者的本機。&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

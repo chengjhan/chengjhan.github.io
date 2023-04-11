@@ -6,7 +6,15 @@
         <description>Recent content in Categories on 小詹&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nexus</title>
+        <link>https://chengjhan.github.io/categories/nexus/</link>
+        <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://chengjhan.github.io/categories/nexus/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>WebLogic</title>
         <link>https://chengjhan.github.io/categories/weblogic/</link>
         <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>

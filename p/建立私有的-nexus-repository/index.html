@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='架設自己的 Maven Central Repository'>
+<title>建立私有的 Nexus Repository</title>
+
+<link rel='canonical' href='https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='建立私有的 Nexus Repository'>
+<meta property='og:description' content='架設自己的 Maven Central Repository'>
+<meta property='og:url' content='https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/'>
+<meta property='og:site_name' content='小詹&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='nexus' /><meta property='article:tag' content='maven' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2023-04-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-11T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="建立私有的 Nexus Repository">
+<meta name="twitter:description" content="架設自己的 Maven Central Repository">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9XVTKET3XH"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-9XVTKET3XH', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_001_hu9d20cc312e10d4de098e07f10db59b10_137219_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">小詹&#39;s Blog</a></h1>
+            <h2 class="site-description">軟體工程師的工作心得筆記</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/chengjhan'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#安裝-nexus-repository">安裝 Nexus Repository</a></li>
+    <li><a href="#建立使用者帳號">建立使用者帳號</a></li>
+    <li><a href="#設定-nexus-repository-連線至-maven-central-repository">設定 Nexus Repository 連線至 Maven Central Repository</a></li>
+    <li><a href="#設定-maven-專案連線至-nexus-repository">設定 Maven 專案連線至 Nexus Repository</a></li>
+    <li><a href="#測試">測試</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/nexus/" >
+                Nexus
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/">建立私有的 Nexus Repository</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            架設自己的 Maven Central Repository
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 11, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_001.png"
+	width="590"
+	height="400"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_001_hu64e13b8f43afd3da83576bf8c68c2913_67729_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_001_hu64e13b8f43afd3da83576bf8c68c2913_67729_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="354px"
+	
+></p>
+<p>公司可能因為防火牆政策擋住了 <a class="link" href="https://repo1.maven.org/maven2/"  target="_blank" rel="noopener"
+    >Maven Central Repository</a>，導致開發者下載不到所需要的套件，或公司有自行開發內部的套件供團隊使用。因此可以藉由架設一個公司內部使用的 Maven Central Repository 幫助下載外部的套件外，也可以自行上傳公司內部開發的套件供團隊使用。而本篇會利用 Nexus Repository 作為公司內部的 Maven Central Repository，在 Windows 的環境下從如何架設 Nexus Repository，到如何設定環境連線到自行架設的 Nexus Repository。</p>
+<h2 id="安裝-nexus-repository">安裝 Nexus Repository</h2>
+<p>至 <a class="link" href="https://www.sonatype.com/products/repository-oss-download"  target="_blank" rel="noopener"
+    >Sonatype 官方網站</a>下載 Nexus Repository，下載後會是一個 zip 壓縮檔，本篇解壓縮至 D:\ 下。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_002.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_002_hu9eb723dfcac3d45fe13dbfd216b80f20_232618_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_002_hu9eb723dfcac3d45fe13dbfd216b80f20_232618_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_003.png"
+	width="1501"
+	height="504"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_003_hu574f0d8d3d84aa6c3707480cb98c1b9b_34018_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_003_hu574f0d8d3d84aa6c3707480cb98c1b9b_34018_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="297"
+		data-flex-basis="714px"
+	
+></p>
+<p>以系統管理員開啟 cmd，利用指令安裝。會自動註冊一個 Nexus Repository，預設會建立名為 nexus 的服務，指令如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\nexus-3.50.0-01-win64\nexus-3.50.0-01\bin
+</span></span><span class="line"><span class="cl">nexus /install
+</span></span></code></pre></div><p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_004.png"
+	width="1732"
+	height="261"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_004_hu5590914e3426edcd7c48a0de024aee74_22233_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_004_hu5590914e3426edcd7c48a0de024aee74_22233_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="663"
+		data-flex-basis="1592px"
+	
+></p>
+<p>接著啟動 Nexus Repository，指令如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl">nexus /start
+</span></span></code></pre></div><p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_005.png"
+	width="1732"
+	height="348"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_005_hu2d45bcb9f9e8f7f3aebd2d9c998c8011_29440_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_005_hu2d45bcb9f9e8f7f3aebd2d9c998c8011_29440_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="497"
+		data-flex-basis="1194px"
+	
+></p>
+<p>啟動後以瀏覽器連線至 http://localhost:8081/ 即可進入 Web Console。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_006.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_006_hu91bf8e522def9d741f7003a9bf3c4569_182565_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_006_hu91bf8e522def9d741f7003a9bf3c4569_182565_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>點擊右上角 Sign in 開啟登入對話框，設定密碼並登入。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_007.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_007_hu77538291d16c69fdcf6541469b014329_187325_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_007_hu77538291d16c69fdcf6541469b014329_187325_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>帳號為 admin，初始密碼位於 D:\nexus-3.50.0-01-win64\sonatype-work\nexus3\admin.password。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_008.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_008_hu77538291d16c69fdcf6541469b014329_188471_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_008_hu77538291d16c69fdcf6541469b014329_188471_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>依照提示重新設定密碼即可。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_009.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_009_hu19d8cc4a36765f00212de9eec61e3a8c_157756_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_009_hu19d8cc4a36765f00212de9eec61e3a8c_157756_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<hr>
+<h2 id="建立使用者帳號">建立使用者帳號</h2>
+<p>上一章節的 admin 帳號通常是管理者管理 Nexus Repository 使用，這邊建議建立一個使用者帳號給專案團隊使用。</p>
+<p>首先先建立一個使用者群組：<br>
+至「Roles」&gt;「Create Role」建立使用者群組。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_010.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_010_hu8de395dace1591470d77c4de7c805f86_153553_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_010_hu8de395dace1591470d77c4de7c805f86_153553_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>Type 選擇「Nexus role」，並自行命名一個 Role ID 及 Role Name。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_011.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_011_hu8de395dace1591470d77c4de7c805f86_133440_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_011_hu8de395dace1591470d77c4de7c805f86_133440_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>加入角色權限：<br>
+因本篇要使用 Maven，所以加入 <code>nx-repository-view-maven2-*-*</code> 的權限。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_012.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_012_hu8de395dace1591470d77c4de7c805f86_151685_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_012_hu8de395dace1591470d77c4de7c805f86_151685_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>完成。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_013.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_013_hu8de395dace1591470d77c4de7c805f86_160481_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_013_hu8de395dace1591470d77c4de7c805f86_160481_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>接著建立一個使用者帳號：<br>
+至「Users」&gt;「Create local user」建立使用者帳號。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_014.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_014_hu02d9ec43fab64ab4f8b4cf1208d87dc2_139449_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_014_hu02d9ec43fab64ab4f8b4cf1208d87dc2_139449_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>自訂帳號名稱及密碼。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_015.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_015_hu02d9ec43fab64ab4f8b4cf1208d87dc2_138213_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_015_hu02d9ec43fab64ab4f8b4cf1208d87dc2_138213_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>將上面建立的 Role ID，賦予給這個使用者帳號，如下圖：</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_016.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_016_hu02d9ec43fab64ab4f8b4cf1208d87dc2_141188_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_016_hu02d9ec43fab64ab4f8b4cf1208d87dc2_141188_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>完成。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_017.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_017_hu02d9ec43fab64ab4f8b4cf1208d87dc2_150355_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_017_hu02d9ec43fab64ab4f8b4cf1208d87dc2_150355_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<hr>
+<h2 id="設定-nexus-repository-連線至-maven-central-repository">設定 Nexus Repository 連線至 Maven Central Repository</h2>
+<p>架設好 Nexus Repository 後，需要設定連線到 Maven Central Repository，以便讓 Nexus Repository 代替我們下載需要的套件。所以 Nexus Repository 的角色會是一個中繼站，會存放曾經下載過的套件。</p>
+<p>至「Repositories」&gt;「maven-central」設定連線：</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_018.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_018_huc1c368292346e066e9cd54e70c855f56_184442_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_018_huc1c368292346e066e9cd54e70c855f56_184442_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_019.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_019_hu4081fb83506a79a33fb6f228b8f9c4da_160377_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_019_hu4081fb83506a79a33fb6f228b8f9c4da_160377_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>設定 Maven Central Repository 的 URL，為「https://repo1.maven.org/maven2/」，通常預設已直接設定。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_020.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_020_hu4081fb83506a79a33fb6f228b8f9c4da_170899_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_020_hu4081fb83506a79a33fb6f228b8f9c4da_170899_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<blockquote>
+<p>Note:<br>
+Nexus Repository 的主機需要能夠連線至 Maven Central Repository，公司的防火牆政策需要開啟對「https://repo1.maven.org/maven2/」的阻擋。若要查詢 <a class="link" href="https://repo1.maven.org/maven2/"  target="_blank" rel="noopener"
+    >https://repo1.maven.org/maven2/</a> 的 IP，可利用 <a class="link" href="https://webiplookup.com/"  target="_blank" rel="noopener"
+    >Web iP Lookup</a> 查詢。</p>
+</blockquote>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_021.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_021_hu0c89803b4489acbe8c1863b50dc77ac4_126611_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_021_hu0c89803b4489acbe8c1863b50dc77ac4_126611_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<hr>
+<h2 id="設定-maven-專案連線至-nexus-repository">設定 Maven 專案連線至 Nexus Repository</h2>
+<p>完成 Nexus Repository 的架設及所有設定後，在使用者端需要將專案連線到 Nexus Repository。這個設定可以在 Maven 專案的 pom.xml 檔或是 Maven 的 settings.xml 檔，這邊介紹利用 settings.xml 檔做設定，這樣其它的專案都可以共享這個設定。</p>
+<p>若是使用 Eclipse 開發可以利用內建的 Maven 設定介面指定 settings.xml 檔路徑。</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_022.png"
+	width="1067"
+	height="788"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_022_hua929c081522bb35294e5ee49d4ace60b_42471_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_022_hua929c081522bb35294e5ee49d4ace60b_42471_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="324px"
+	
+></p>
+<p>settings.xml 設定為：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.2.0&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;servers&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;server&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>nexus<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;username&gt;</span>users<span class="nt">&lt;/username&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;password&gt;</span>P@ssw0rd<span class="nt">&lt;/password&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/server&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/servers&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;mirrors&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;mirror&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>nexus<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;mirrorOf&gt;</span>*<span class="nt">&lt;/mirrorOf&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;name&gt;</span>Nexus<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;url&gt;</span>http://localhost:8081/repository/maven-public/<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/mirror&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/mirrors&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;profiles&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;profile&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;id&gt;</span>nexus<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;repositories&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;repository&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;id&gt;</span>nexus<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;name&gt;</span>Nexus<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;url&gt;</span>http://localhost:8081/repository/maven-public/<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;releases&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/releases&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;snapshots&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;updatePolicy&gt;</span>always<span class="nt">&lt;/updatePolicy&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/snapshots&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/repository&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/repositories&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;pluginRepositories&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;pluginRepository&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;id&gt;</span>nexus<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;name&gt;</span>Nexus<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;url&gt;</span>http://localhost:8081/repository/maven-public/<span class="nt">&lt;/url&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;releases&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/releases&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;snapshots&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;updatePolicy&gt;</span>always<span class="nt">&lt;/updatePolicy&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&lt;/snapshots&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/pluginRepository&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;/pluginRepositories&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/profile&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/profiles&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;activeProfiles&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;activeProfile&gt;</span>nexus<span class="nt">&lt;/activeProfile&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/activeProfiles&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/settings&gt;</span>
+</span></span></code></pre></div><p>以下將說明各個設定的目的：</p>
+<ul>
+<li>
+<p><code>&lt;server&gt;</code> 標籤指定使用者帳號、密碼。</p>
+</li>
+<li>
+<p><code>&lt;mirror&gt;</code> 標籤指定 Nexus Repository 的 URL，其中必須填 maven-public 這個 Repository 的 URL。讓 Maven 只使用 Nexus Repository，不會去連線到 Maven Central Repository，如下圖：</p>
+</li>
+</ul>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_023.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_023_hu2df5d4f2395ed8a5b2c26702a5c9e184_157064_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_023_hu2df5d4f2395ed8a5b2c26702a5c9e184_157064_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<ul>
+<li>
+<p><code>&lt;profile&gt;</code> 標籤指定一個 id 為 nexus 的 profile，同時也指定 Nexus Repository 的 URL。</p>
+</li>
+<li>
+<p><code>&lt;activeProfile&gt;</code> 標籤為啟用 nexus 這個 id 的 profile。</p>
+</li>
+</ul>
+<hr>
+<h2 id="測試">測試</h2>
+<p>在 Maven 專案的 pom.xml 添加一個 gson 的 dependency，如下圖：</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_024.png"
+	width="1616"
+	height="954"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_024_hubb7464d86fd2dcef1ec4aa90cf6bb02a_115438_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_024_hubb7464d86fd2dcef1ec4aa90cf6bb02a_115438_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<p>存檔後檢視 Nexus Repository 是否有下載到套件，如下圖：</p>
+<p><img src="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_025.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_025_hu0271d04e9a9395c2d483f49557dcf94f_206650_480x0_resize_box_3.png 480w, /p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/Image_025_hu0271d04e9a9395c2d483f49557dcf94f_206650_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>結果確實是透過自己建的 Nexus Repository 下載到 gson 套件，專案再透過 Nexus Repository 將套件下載到開發者的本機。</p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/nexus/">nexus</a>
+        
+            <a href="/tags/maven/">maven</a>
+        
+            <a href="/tags/java/">java</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在 Maven 專案新增私有的 jar 檔</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%9C%A8-windows-%E5%AE%89%E8%A3%9D-maven/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在 Windows 安裝 Maven</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="chengjhan/chengjhan.github.io"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 小詹&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
