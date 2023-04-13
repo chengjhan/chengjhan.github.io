@@ -42,8 +42,8 @@
 &lt;/p&gt;&lt;span class=&#34;cite&#34;&gt;&lt;span&gt;― &lt;/span&gt;&lt;span&gt;许晓斌 著, &lt;/span&gt;&lt;cite&gt;Maven实战&lt;/cite&gt;&lt;/span&gt;&lt;/blockquote&gt;
 &lt;p&gt;這邊使用 system 為編譯及執行時有效，在部署至容器後因容器已提供所以無須使用，需再搭配 &lt;code&gt;&amp;lt;systemPath&amp;gt;&lt;/code&gt; 標籤指定本地 jar 檔路徑。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;方法二在-pomxml-檔添加-repositories-引用本地-repository-路徑&#34;&gt;方法二：在 pom.xml 檔添加 &amp;lt;repositories&amp;gt; 引用本地 repository 路徑&lt;/h2&gt;
-&lt;p&gt;於專案根目錄建立 lib 目錄作為 repository，並在 pom.xml 添加 &lt;code&gt;&amp;lt;repositories&amp;gt;&lt;/code&gt;，如下：&lt;/p&gt;
+&lt;h2 id=&#34;方法二在-pomxml-檔添加-repositories-引用專案-repository-路徑&#34;&gt;方法二：在 pom.xml 檔添加 &amp;lt;repositories&amp;gt; 引用專案 Repository 路徑&lt;/h2&gt;
+&lt;p&gt;於專案根目錄建立 lib 目錄作為 Repository，並在 pom.xml 添加 &lt;code&gt;&amp;lt;repositories&amp;gt;&lt;/code&gt;，如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;repositories&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;repository&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;lib&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
@@ -86,7 +86,7 @@
 		data-flex-basis=&#34;327px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;設定後會在 Maven local repository 複製相同的 jar 檔。&lt;/p&gt;
+&lt;p&gt;設定後會在 Maven Local Repository 複製相同的 jar 檔。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_002.png&#34;
 	width=&#34;1499&#34;
 	height=&#34;510&#34;
@@ -100,8 +100,8 @@
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;方法三以-installinstall-file-指令將-jar-檔安裝到-maven-local-repository&#34;&gt;方法三：以 install:install-file 指令將 jar 檔安裝到 Maven local repository&lt;/h2&gt;
-&lt;p&gt;若需在 pom.xml 添加依賴，必須以指令手動安裝此依賴的 Maven 座標，以將 jar 檔安裝在 Maven local repository。&lt;/p&gt;
+&lt;h2 id=&#34;方法三以-installinstall-file-指令將-jar-檔安裝到-maven-local-repository&#34;&gt;方法三：以 install:install-file 指令將 jar 檔安裝到 Maven Local Repository&lt;/h2&gt;
+&lt;p&gt;若需在 pom.xml 添加依賴，必須以指令手動安裝此依賴的 Maven 座標，以將 jar 檔安裝在 Maven Local Repository。&lt;/p&gt;
 &lt;p&gt;指令如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn install:install-file
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -DgroupId=&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;group-id&amp;gt;
@@ -129,7 +129,7 @@
 		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;已安裝 ojdbc8.jar 檔於 Maven local repository。&lt;/p&gt;
+&lt;p&gt;已安裝 ojdbc8.jar 檔於 Maven Local Repository。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/%E5%9C%A8-maven-%E5%B0%88%E6%A1%88%E6%96%B0%E5%A2%9E%E7%A7%81%E6%9C%89%E7%9A%84-jar-%E6%AA%94/Image_004.png&#34;
 	width=&#34;1491&#34;
 	height=&#34;452&#34;
