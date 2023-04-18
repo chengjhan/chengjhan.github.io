@@ -1363,6 +1363,7 @@ Nexus Repository 的主機需要能夠連線至 Maven Central Repository，公�
     &gt;Maven Central Repository&lt;/a&gt;，因此必須手動新增。&lt;/p&gt;
 &lt;p&gt;本篇以新增 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/tw/database/technologies/appdev/jdbc-downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Oracle Database JDBC driver&lt;/a&gt; 為例來說明三種方法的實作。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;方法一在-pomxml-檔添加-dependency-引用本地-jar-檔路徑&#34;&gt;方法一：在 pom.xml 檔添加 &amp;lt;dependency&amp;gt; 引用本地 jar 檔路徑&lt;/h2&gt;
 &lt;p&gt;於專案根目錄建立 lib 目錄，將 ojdbc8.jar 檔放入，並在 pom.xml 添加 &lt;code&gt;&amp;lt;dependency&amp;gt;&lt;/code&gt;，如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
