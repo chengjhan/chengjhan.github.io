@@ -341,6 +341,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chengjhan.github.io/p/%E5%BB%BA%E7%AB%8B%E7%A7%81%E6%9C%89%E7%9A%84-nexus-repository/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;上篇&lt;/a&gt;介紹了如何架設 Nexus Repository 及如何設定開發環境連線到 Nexus Repository 下載外部的套件。本篇將介紹如何將自行開發的套件上傳到 Nexus Repository。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;情境一自行開發的套件&#34;&gt;情境一：自行開發的套件&lt;/h2&gt;
 &lt;p&gt;在 Maven 專案的 pom.xml 添加設定：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;distributionManagement&amp;gt;&lt;/span&gt;
