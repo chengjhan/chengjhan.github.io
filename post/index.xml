@@ -1013,6 +1013,7 @@ Nexus Repository 的主機需要能夠連線至 Maven Central Repository，公�
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;上篇&lt;/a&gt;介紹了 WLST 命令列的基本用法，本篇將介紹使用 .py 檔的方式，將執行的命令寫成 .py 檔，利用遠端的方式更自動化地管理 WebLogic。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;啟動-managed-server&#34;&gt;啟動 Managed Server&lt;/h2&gt;
 &lt;p&gt;編輯 .py 檔，檔名命名為 startManagedServer.py，放置於 &amp;lt;Oracle_Home&amp;gt;\user_projects\domains\base_domain 下，檔案內容如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;connect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;weblogic&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;P@ssw0rd&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;t3://localhost:7001&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 連線 WLST&lt;/span&gt;

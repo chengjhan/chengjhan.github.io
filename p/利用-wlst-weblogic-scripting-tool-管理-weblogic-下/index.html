@@ -337,6 +337,7 @@ if (!doNotTrack) {
 ></p>
 <p><a class="link" href="https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-wlst-weblogic-scripting-tool-%E7%AE%A1%E7%90%86-weblogic-%E4%B8%8A/"  target="_blank" rel="noopener"
     >上篇</a>介紹了 WLST 命令列的基本用法，本篇將介紹使用 .py 檔的方式，將執行的命令寫成 .py 檔，利用遠端的方式更自動化地管理 WebLogic。</p>
+<hr>
 <h2 id="啟動-managed-server">啟動 Managed Server</h2>
 <p>編輯 .py 檔，檔名命名為 startManagedServer.py，放置於 &lt;Oracle_Home&gt;\user_projects\domains\base_domain 下，檔案內容如下：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;weblogic&#39;</span><span class="p">,</span> <span class="s1">&#39;P@ssw0rd&#39;</span><span class="p">,</span> <span class="s1">&#39;t3://localhost:7001&#39;</span><span class="p">)</span> <span class="c1"># 連線 WLST</span>
