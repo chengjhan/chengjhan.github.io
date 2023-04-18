@@ -579,6 +579,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;公司可能因為防火牆政策擋住了 &lt;a class=&#34;link&#34; href=&#34;https://repo1.maven.org/maven2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Maven Central Repository&lt;/a&gt;，導致開發者下載不到所需要的套件，或公司有自行開發內部的套件供團隊使用。因此可以藉由架設一個公司內部使用的 Maven Central Repository 幫助下載外部的套件外，也可以自行上傳公司內部開發的套件供團隊使用。而本篇會利用 Nexus Repository 作為公司內部的 Maven Central Repository，在 Windows 的環境下從如何架設 Nexus Repository，到如何設定環境連線到自行架設的 Nexus Repository。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;安裝-nexus-repository&#34;&gt;安裝 Nexus Repository&lt;/h2&gt;
 &lt;p&gt;至 &lt;a class=&#34;link&#34; href=&#34;https://www.sonatype.com/products/repository-oss-download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Sonatype 官方網站&lt;/a&gt;下載 Nexus Repository，下載後會是一個 zip 壓縮檔，本篇解壓縮至 D:\ 下。&lt;/p&gt;
