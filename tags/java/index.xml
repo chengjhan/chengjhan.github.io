@@ -6,7 +6,202 @@
         <description>Recent content in java on 小詹&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chengjhan.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>WildFly Maven Plugin 自動部署</title>
+        <link>https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/</link>
+        <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_001.png&#34;
+	width=&#34;3000&#34;
+	height=&#34;997&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_001_hu577c116bf25b49da7312b6b8f501ddd8_110344_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_001_hu577c116bf25b49da7312b6b8f501ddd8_110344_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;300&#34;
+		data-flex-basis=&#34;722px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;WildFly 原名為 JBoss Application Server (JBoss AS)，是一個 Java 的應用程式伺服器（中介軟體）。Red Hat 公司收購 JBoss 後，將其改名為 WildFly。而 JBoss Enterprise Application Platform (JBoss EAP) 是基於 WildFly 開發的企業級商用版本，因此 WildFly Maven Plugin 也適用於 JBoss EAP。本篇將介紹如何透過 WildFly Maven Plugin 部署應用程式到 JBoss EAP。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;設定-pomxml-檔&#34;&gt;設定 pom.xml 檔&lt;/h2&gt;
+&lt;p&gt;在 Maven 專案的 pom.xml 檔添加以下設定：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_002.png&#34;
+	width=&#34;1508&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_002_hu05b5c48abe7d3abd6722a587b0ac72a0_114672_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_002_hu05b5c48abe7d3abd6722a587b0ac72a0_114672_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;316px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.wildfly.plugins&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wildfly-maven-plugin&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.0.2.Final&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;phase&amp;gt;&lt;/span&gt;install&lt;span class=&#34;nt&#34;&gt;&amp;lt;/phase&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;deploy&lt;span class=&#34;nt&#34;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;filename&amp;gt;&lt;/span&gt;demo-0.0.1-SNAPSHOT.war&lt;span class=&#34;nt&#34;&gt;&amp;lt;/filename&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;hostname&amp;gt;&lt;/span&gt;127.0.0.1&lt;span class=&#34;nt&#34;&gt;&amp;lt;/hostname&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9990&lt;span class=&#34;nt&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;username&amp;gt;&lt;/span&gt;jboss&lt;span class=&#34;nt&#34;&gt;&amp;lt;/username&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;password&amp;gt;&lt;/span&gt;P@ssw0rd&lt;span class=&#34;nt&#34;&gt;&amp;lt;/password&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;force&amp;gt;&lt;/span&gt;true&lt;span class=&#34;nt&#34;&gt;&amp;lt;/force&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;execution&amp;gt;&lt;/code&gt;：為將 &lt;code&gt;&amp;lt;goal&amp;gt;&lt;/code&gt; 標籤的 deploy 綁定到 Maven 的 install 階段，因此只需要執行 &lt;code&gt;mvn install&lt;/code&gt; 即可，指令可不加 &lt;code&gt;wildfly:deploy&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;filename&amp;gt;&lt;/code&gt;：為欲部署的 war 檔名稱。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;hostname&amp;gt;&lt;/code&gt;：為伺服器的 IP 位址。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;port&amp;gt;&lt;/code&gt;：為 Web Console 的 port，預設為 9990。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt;：為 Web Console 的帳號。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;password&amp;gt;&lt;/code&gt;：為 Web Console 的密碼。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;force&amp;gt;&lt;/code&gt;：若為 true，則已部署同名的 war 檔會強制覆蓋。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;執行部署&#34;&gt;執行部署&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn clean install wildfly:deploy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn clean install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_003.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_003_hubb05f6d002f464a84af9b5ecfc3aa13c_127062_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_003_hubb05f6d002f464a84af9b5ecfc3aa13c_127062_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_004.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_004_hua2e18a8fc2f6fea3df6f9db046afa343_118348_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_004_hua2e18a8fc2f6fea3df6f9db046afa343_118348_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_005.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_005_hud5f4fa0c70c20344900eb2e4f0c359de_112337_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_005_hud5f4fa0c70c20344900eb2e4f0c359de_112337_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;另外，也可將 &lt;code&gt;&amp;lt;configuration&amp;gt;&lt;/code&gt; 標籤的設定加在指令的參數，即可不寫 &lt;code&gt;&amp;lt;configuration&amp;gt;&lt;/code&gt; 標籤，如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;filename&amp;gt;&lt;/span&gt;demo-0.0.1-SNAPSHOT.war&lt;span class=&#34;nt&#34;&gt;&amp;lt;/filename&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;hostname&amp;gt;&lt;/span&gt;127.0.0.1&lt;span class=&#34;nt&#34;&gt;&amp;lt;/hostname&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9990&lt;span class=&#34;nt&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;username&amp;gt;&lt;/span&gt;jboss&lt;span class=&#34;nt&#34;&gt;&amp;lt;/username&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;password&amp;gt;&lt;/span&gt;P@ssw0rd&lt;span class=&#34;nt&#34;&gt;&amp;lt;/password&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;force&amp;gt;&lt;/span&gt;true&lt;span class=&#34;nt&#34;&gt;&amp;lt;/force&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不寫以上設定，將設定寫在指令，如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn clean install wildfly:deploy
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dwildfly.deployment.name=demo-0.0.1-SNAPSHOT.war
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dwildfly.hostname=127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dwildfly.port=9990
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dwildfly.username=jboss
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Dwildfly.password=P@ssw0rd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -Ddeploy.force=true
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_006.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_006_hu6ea9a64d557f8285cfe807a8200e3b86_127418_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_006_hu6ea9a64d557f8285cfe807a8200e3b86_127418_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_007.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_007_hu26e32312c222d7c00f4e245b09c470fb_117124_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_007_hu26e32312c222d7c00f4e245b09c470fb_117124_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;執行去部署&#34;&gt;執行去部署&lt;/h2&gt;
+&lt;p&gt;執行 &lt;code&gt;wildfly:undeploy&lt;/code&gt; 即可去部署，如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mvn wildfly:undeploy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_008.png&#34;
+	width=&#34;1732&#34;
+	height=&#34;696&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_008_hud33b78cb302590a8708b917fa6050be6_67891_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_008_hud33b78cb302590a8708b917fa6050be6_67891_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;597px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_009.png&#34;
+	width=&#34;1922&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_009_hu3467dd94b00b90df9f2827aa9e3219a3_102051_480x0_resize_box_3.png 480w, https://chengjhan.github.io/p/wildfly-maven-plugin-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/Image_009_hu3467dd94b00b90df9f2827aa9e3219a3_102051_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;參考資料&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.wildfly.org/wildfly-maven-plugin/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WildFly Maven Plugin (wildfly-maven-plugin)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.miniasp.com/post/2022/09/14/How-to-Deploy-Spring-Boot-to-WildFly-Application-Server&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;如何將 Spring Boot 應用程式部署到 WildFly 應用程式伺服器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://hantsy.github.io/jakartaee8-starter-boilerplate/03run-wildfly-mvn.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Deploying applications to WildFly Server using WildFly Maven plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
         <title>WebLogic Maven Plug-In 自動部署</title>
         <link>https://chengjhan.github.io/p/weblogic-maven-plug-in-%E8%87%AA%E5%8B%95%E9%83%A8%E7%BD%B2/</link>
         <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
