@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='讓別人連線到自己本機的 localhost 伺服器'>
+<title>利用 ngrok 讓外網連線到本機的 localhost 伺服器</title>
+
+<link rel='canonical' href='https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='利用 ngrok 讓外網連線到本機的 localhost 伺服器'>
+<meta property='og:description' content='讓別人連線到自己本機的 localhost 伺服器'>
+<meta property='og:url' content='https://chengjhan.github.io/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/'>
+<meta property='og:site_name' content='小詹&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ngrok' /><meta property='article:published_time' content='2023-04-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="利用 ngrok 讓外網連線到本機的 localhost 伺服器">
+<meta name="twitter:description" content="讓別人連線到自己本機的 localhost 伺服器">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9XVTKET3XH"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-9XVTKET3XH', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_001_hu9d20cc312e10d4de098e07f10db59b10_137219_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">小詹&#39;s Blog</a></h1>
+            <h2 class="site-description">軟體工程師的工作心得筆記</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/chengjhan'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#下載-ngrok">下載 ngrok</a></li>
+    <li><a href="#取得-token">取得 Token</a></li>
+    <li><a href="#取得外網網址">取得外網網址</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ngrok/" >
+                ngrok
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/">利用 ngrok 讓外網連線到本機的 localhost 伺服器</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            讓別人連線到自己本機的 localhost 伺服器
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 27, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_001.png"
+	width="1840"
+	height="800"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_001_hu45e8279320b46178bf35ba3ba8bc42e2_45646_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_001_hu45e8279320b46178bf35ba3ba8bc42e2_45646_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="230"
+		data-flex-basis="552px"
+	
+></p>
+<p>在本機環境開發的網頁應用程式或服務可能初期需要給客戶測試，但在開發階段可能還沒建置好測試環境。除了內網環境之外，可以利用 ngrok 的服務，將 localhost 臨時轉成可以讓外網連線的網址，即可使用外網讓客戶連線測試使用。本篇會示範在 Windows 環境下安裝的 Jenkins 服務，利用 ngrok 產生可以讓外網連線的網址並連線使用。</p>
+<hr>
+<h2 id="下載-ngrok">下載 ngrok</h2>
+<p>至 <a class="link" href="https://ngrok.com/"  target="_blank" rel="noopener"
+    >ngrok 官網</a>免費註冊一個帳號。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_002.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_002_hu66c23253d7c4f36acb637547fa2844ab_116887_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_002_hu66c23253d7c4f36acb637547fa2844ab_116887_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>註冊後即可下載 ngrok。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_003.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_003_hu4962d88c97019736db59499ce1e01ff1_137718_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_003_hu4962d88c97019736db59499ce1e01ff1_137718_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>ngrok 為一個壓縮檔，解壓縮後放置於欲放置的路徑，本篇放置於 D:\ 目錄下。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_004.png"
+	width="1499"
+	height="461"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_004_hu3cd664a97864f7d682be0529c48f7962_31271_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_004_hu3cd664a97864f7d682be0529c48f7962_31271_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="325"
+		data-flex-basis="780px"
+	
+></p>
+<hr>
+<h2 id="取得-token">取得 Token</h2>
+<p>點選「Your Authtoken」取得 Token。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_005.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_005_hu2ffb84911bd26e3e1d793b36b9fc8e72_131954_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_005_hu2ffb84911bd26e3e1d793b36b9fc8e72_131954_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>利用指令將 Token 註冊到本機。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\ngrok-v3-stable-windows-amd64
+</span></span><span class="line"><span class="cl">ngrok config add-authtoken <span class="p">&lt;</span>Token&gt;
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_006.png"
+	width="1732"
+	height="261"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_006_hucf98b0e6ac3aa4c2d1f507affd819009_26860_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_006_hucf98b0e6ac3aa4c2d1f507affd819009_26860_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="663"
+		data-flex-basis="1592px"
+	
+></p>
+<hr>
+<h2 id="取得外網網址">取得外網網址</h2>
+<p>啟動本機的 Jenkins 服務。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_007.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_007_hu8e82092ef491379161373d3475861ccd_61257_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_007_hu8e82092ef491379161373d3475861ccd_61257_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>利用指令將「localhost:18080」轉成外網網址。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-batch" data-lang="batch"><span class="line"><span class="cl"><span class="k">cd</span> /d D:\ngrok-v3-stable-windows-amd64
+</span></span><span class="line"><span class="cl">ngrok http localhost:18080
+</span></span></code></pre></div><p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_008.png"
+	width="1732"
+	height="319"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_008_hudba434468f7c1eeb3a314b8965b97615_16015_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_008_hudba434468f7c1eeb3a314b8965b97615_16015_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="542"
+		data-flex-basis="1303px"
+	
+></p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_009.png"
+	width="1732"
+	height="956"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_009_hu3676aceb41dcfd202e215403179c0ada_41652_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_009_hu3676aceb41dcfd202e215403179c0ada_41652_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="434px"
+	
+></p>
+<p>利用 ngrok 產生的網址「https://778e-1-160-15-48.ngrok-free.app」，即可連線。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_010.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_010_hu6a3034b5f9a96bc87b72f87153ae24af_108070_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_010_hu6a3034b5f9a96bc87b72f87153ae24af_108070_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>點選「Visit Site」，即可訪問到本機安裝的 Jenkins。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_011.png"
+	width="1922"
+	height="1142"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_011_hu167799522f442119047bde9f7c03d451_61791_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_011_hu167799522f442119047bde9f7c03d451_61791_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+<p>最後檢查 Console，會顯示有成功請求到本機的服務。</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_012.png"
+	width="1732"
+	height="956"
+	srcset="/p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_012_huc46dc9eaf411614094aadf7aa9e64ca5_66643_480x0_resize_box_3.png 480w, /p/%E5%88%A9%E7%94%A8-ngrok-%E8%AE%93%E5%A4%96%E7%B6%B2%E9%80%A3%E7%B7%9A%E5%88%B0%E6%9C%AC%E6%A9%9F%E7%9A%84-localhost-%E4%BC%BA%E6%9C%8D%E5%99%A8/Image_012_huc46dc9eaf411614094aadf7aa9e64ca5_66643_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="434px"
+	
+></p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ngrok/">ngrok</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="chengjhan/chengjhan.github.io"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 小詹&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
